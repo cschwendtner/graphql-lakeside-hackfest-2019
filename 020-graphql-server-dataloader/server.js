@@ -1,6 +1,6 @@
 const { ApolloServer, gql, ApolloError } = require('apollo-server');
 const { sqlitedb, initDb } = require('./sqlite-db');
-// const DataLoader = require('dataloader');
+const DataLoader = require('dataloader');
 
 const typeDefs = gql`
 
@@ -30,9 +30,9 @@ const resolvers = {
     },
 
     Book: {
-        author: (book, _, { db }) => db.getAuthorById(book.authorId),
+        // author: (book, _, { db }) => db.getAuthorById(book.authorId),
         
-        // author: (book, _, { authorsLoader }) => authorsLoader.load(book.authorId),
+        author: (book, _, { authorsLoader }) => authorsLoader.load(book.authorId),
     },
 };
 
@@ -42,7 +42,7 @@ const server = new ApolloServer({
     context: ({ req }) => {
         return {
             db: sqlitedb,
-            // authorsLoader: new DataLoader(sqlitedb.getAuthorsByIds)
+            authorsLoader: new DataLoader(sqlitedb.getAuthorsByIds)
         }
     }
 });

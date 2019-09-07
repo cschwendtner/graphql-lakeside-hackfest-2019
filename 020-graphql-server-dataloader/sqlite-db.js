@@ -65,11 +65,11 @@ exports.sqlitedb = {
         return sqlite.get(stmt, [ id ]);
     },
 
-    // getAuthorsByIds: async (ids) => {
-    //     const stmt = `SELECT * FROM Author where ID in (${ids.map(id => '?').join(',')})`;
-    //     console.log(stmt);
-    //     const authors = await sqlite.all(stmt, ids);
-    //     return ids.map(id => authors.find(a => a.id === id));
-    // },
+    getAuthorsByIds: async (ids) => {
+        const stmt = `SELECT * FROM Author where ID in (${ids.map(id => '?').join(',')})`;
+        console.log(stmt);
+        const authors = await sqlite.all(stmt, ids);
+        return ids.map(id => authors.find(a => a.id === id));
+    },
 
 }

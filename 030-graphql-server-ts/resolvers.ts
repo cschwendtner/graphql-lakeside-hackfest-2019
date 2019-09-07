@@ -1,14 +1,26 @@
-// import { QueryResolvers, BookResolvers } from './graphql';
+import { QueryResolvers, BookResolvers } from './graphql';
 
-// export const Query: QueryResolvers = {
+export const Query: QueryResolvers = {
+    book: (root, args, context) => {
+        return {
+            id: 11,
+            title: "the title",
+            authorId: 21
+        }
+    }
+};
 
-// };
+export const Book: BookResolvers = {
+    author: (book, args, context) => {
+        return {
+            id: 21,
+            firstName: "firstName of the author",
+            lastName: "lastName of the author"
+        };
+    }
+};
 
-// export const Book: BookResolvers = {
-
-// };
-
-// export const resolvers = {
-//     Query,
-//     Book
-// };
+export const resolvers = {
+    Query,
+    Book
+};
