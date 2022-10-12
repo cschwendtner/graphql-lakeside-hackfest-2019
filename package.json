@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "dependencies": {
-    "apollo-server": "^2.14.2",
+    "apollo-server": "^2.25.4",
     "graphql": "^14.5.4",
     "dataloader": "^1.4.0",
     "sqlite": "^3.0.3",
